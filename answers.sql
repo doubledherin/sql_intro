@@ -64,3 +64,15 @@ select id, status, order_total from orders where customer_id = (select id from c
 -- Problem 22
 select orders.id, status, order_total from orders join customers on (orders.customer_id=customers.id) WHERE email='phyllis@demizz.edu'
 
+-- Problem 23
+select * from order_items where order_id = 2725
+
+-- Problem 24
+SELECT common_name, melon_type, quantity, unit_price, total_price FROM melons JOIN order_items on (melons.id = order_items.melon_id) WHERE order_id = 2725;
+
+-- Problem 25
+select SUM(order_total) from orders WHERE salesperson_id IS NULL
+
+-- Problem 26
+SELECT givenname, surname, SUM(order_total), SUM(order_total) * .15 FROM salespeople LEFT JOIN orders ON (orders.salesperson_id=salespeople.id) GROUP BY salespeople.id;
+
